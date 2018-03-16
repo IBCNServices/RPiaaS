@@ -9,7 +9,8 @@ RPiaaS provides an easy-to-use cloud environment for experimentation and validat
 
 ## Source Code will be released soon
 
-We are currently cleaning up the source code and finishing all documentation. All code and documentation will be released very soon, so please come back to this page in a few weeks.
+We just received permission to publish the code, and are now cleaning up the source code and finishing all documentation. 
+All code and documentation will be released very soon, so please come back to this page in a few weeks.
 
 ## Disclaimer
 
@@ -21,7 +22,7 @@ If you use this code for your own projects, please give credit to the original a
 
 ## License
 
-Copyright 2018 Universiteit Gent - imec - IDLab
+Copyright 2018 Ghent University - imec - IDLab
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
