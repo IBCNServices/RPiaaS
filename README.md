@@ -13,7 +13,11 @@ We are currently cleaning up the source code and finishing all documentation. Al
 
 ## Disclaimer
 
-RPiaaS is developed at [Ghent University](https://www.ugent.be/en) - [IDLab](https://www.ugent.be/ea/idlab/en). We strongly encourage fellow researchers within the field to try out and customize the code for their own research projects. If you use this code for your own projects, please give credit to the original authors.
+RPiaaS is developed at [Ghent University](https://www.ugent.be/en) - [IDLab](https://www.ugent.be/ea/idlab/en). 
+We strongly encourage fellow researchers within the field to try out and customize the code for their own research projects. 
+If you use this code for your own projects, please give credit to the original authors, for example by citing the following publication:
+
+> Pieter-Jan Maenhaut, Hendrik Moens, Bruno Volckaert, Veerle Ongenae, Filip De Turck. Resource Allocation in the Cloud: From Simulation to Experimental Validation . In proceedings of the 2017 IEEE 10th International Conference on Cloud Computing (CLOUD 2017), Honolulu, Hawaii, USA, 2017
 
 ## License
 
