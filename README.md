@@ -15,4 +15,18 @@ We are currently cleaning up the source code and finishing all documentation. Al
 
 RPiaaS is developed at [Ghent University](https://www.ugent.be/en) - [IDLab](https://www.ugent.be/ea/idlab/en). We strongly encourage fellow researchers within the field to try out and customize the code for their own research projects. If you use this code for your own projects, please give credit to the original authors.
 
+## License
 
+Copyright 2018 Universiteit Gent - imec - IDLab
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
