@@ -3,8 +3,8 @@ A Raspberry Pi Cloud Testbed
 
 - [Introduction](#introduction)
 - [Overview](#overview)
-- [Source Code](#source-code)
-- [Getting Started](#getting-started)
+    - [Source Code](#source-code)
+    - [Getting Started](#getting-started)
 - [Disclaimer](#disclaimer)
 - [License](#license)
 
