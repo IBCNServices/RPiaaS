@@ -1,0 +1,7 @@
+*/node_modules/
+*/npm-debug.log
+.DS_Store
+*/DS_Store
+logs/
+config/*
+src/master/static/config.json

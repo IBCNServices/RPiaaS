@@ -1,0 +1,41 @@
+{
+	"interface": "eth0",
+	"clusters":	[
+	{
+		"domain": "cluster1.rpiaas.test",
+		"prefix": "10.0.1",
+		"nodes": [{
+			"type": "rpi3",
+			"hostname": "node1",
+			"suffix": "1",
+			"hwaddr": "00:00:00:00:00:00"
+		}, {
+			"type": "rpi3",
+			"hostname": "node2",
+			"suffix": "2",
+			"hwaddr": "00:00:00:00:00:00"
+		}]
+	}, {
+		"domain": "cluster2.rpiaas.test",
+		"prefix": "10.0.2",
+		"nodes": [{
+			"type": "rpi3",
+			"hostname": "node1",
+			"suffix": "1",
+			"hwaddr": "00:00:00:00:00:00"
+		}, {
+			"type": "rpi3",
+			"hostname": "node2",
+			"suffix": "2",
+			"hwaddr": "00:00:00:00:00:00"
+		}]
+	}, {
+		"domain": "rpiaas.test",
+		"prefix": "",
+		"nodes": [{
+			"hostname": "master",
+			"suffix": "rpiaas-cas",
+			"hwaddr": ""
+		}]
+	}]
+}
