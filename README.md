@@ -1,11 +1,23 @@
 # RPiaaS - Raspberry Pi as a Service
 A Raspberry Pi Cloud Testbed 
 
+- [Introduction](#introduction)
+- [Overview](#overview)
+- [Source Code](#source-code)
+- [Getting Started](#getting-started)
+- [Disclaimer](#disclaimer)
+- [License](#license)
+
 ## Introduction
 
 Raspberry Pi as a Service (**RPiaaS**) is a low-cost and energy-efficient cloud testbed built using [Raspberry Pi's](https://www.raspberrypi.org). The testbed consists of multiple worker nodes, which can be aggregated in small clusters. Every node in the cluster is interconnected, and there is a master node managing the whole testbed. This master node can be a Raspberry Pi or any device running a Linux distribution.
 
 RPiaaS provides an easy-to-use cloud environment for experimentation and validation of resource management experiments, and is initially designed to facilitate the step from simulations towards experimental evaluations on larger cloud testbeds. The developed software however is easy to extend and/or customize, for example to use it for managing a classroom environment or to build a multimedia streaming cluster.
+
+## Source Code will be released soon
+
+We just received permission to publish the code, and are now cleaning up the source code and finishing all documentation. 
+All code and documentation will be released very soon, so please come back to this page in a few weeks.
 
 
 ## Overview
@@ -32,11 +44,6 @@ To facilitate the installation, two bash scripts are provided:
 The configuration files required for the different containers are automatically generated during startup.
 
 **Important:** Before deploying the services, a *config.json* needs to be created inside the *config/* folder. In this file, the interface of the master node used for communication with the cluster(s), and an overview of the different cluster nodes have to be added. The *config.example.json* file inside this folder can be used as a template for creating this file. In this example, the master node communicates with the cluster nodes on *eth0* and their are two clusters defined, each consisting of 2 worker nodes. The *config.json* file needs to be created before launching the containers, as during startup the configuration files for the services are automatically generated using this configuration file.
-
-## Source Code will be released soon
-
-We just received permission to publish the code, and are now cleaning up the source code and finishing all documentation. 
-All code and documentation will be released very soon, so please come back to this page in a few weeks.
 
 ## Disclaimer
 
