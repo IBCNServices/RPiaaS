@@ -1,7 +1,11 @@
-*/node_modules/
-*/npm-debug.log
+# Node
+node_modules/
+npm-debug.log
+
+# MAC
 .DS_Store
-*/DS_Store
+
+# Config files and logs
 logs/
 config/*
 src/master/static/config.json
