@@ -1,0 +1,50 @@
+##############################################
+# Docker compose file other services         #
+#              required on master node       #
+# For agents: see rpiaas-agent.yml           #
+##############################################
+version: "2"  # "3" if beta release (swarm mode)
+services:
+  rpiaas-nfs:
+    build: 
+      context: ../../
+      dockerfile: src/docker/rpiaas-nfs/Dockerfile_${ARCH} 
+    ports:
+      - "111:111"
+      - "111:111/udp"
+      - "2049:2049"
+      - "2049:2049/udp"
+      - "32764-32769:32764-32769"
+      - "32764-32769:32764-32769/udp"
+    privileged: true
+    volumes:
+      - /nfs:/nfs
+    cap_add:
+      - NET_ADMIN        
+  rpiaas-dnsmasq:
+    build: 
+      context: ../../
+      dockerfile: src/docker/rpiaas-dnsmasq/Dockerfile_${ARCH}
+    cap_add:
+      - NET_ADMIN
+    network_mode: "host"
+    volumes:
+      - /tftpboot:/tftpboot
+# Running in host network mode, so no ports required!
+    # ports:
+    # - "53:53"
+    # - "53:53/udp"
+    # - "67:67"
+    # - "67:67/udp"
+    # - "547:547"
+    # - "547:547/udp"
+    # - "647:647"
+    # - "647:647/udp"
+    # - "847:847"
+    # - "847:847/udp"    
+  rpiaas-mongo:
+    build: 
+      context: ./
+      dockerfile: rpiaas-mongo/Dockerfile_${ARCH}
+    ports:
+      - "27017:27017"

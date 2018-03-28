@@ -1,0 +1,4 @@
+# Base image for x64/x86
+FROM mongo
+
+EXPOSE 27017/tcp

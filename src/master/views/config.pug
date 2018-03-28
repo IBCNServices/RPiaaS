@@ -1,0 +1,59 @@
+extends ./master.pug
+block content
+	div(class='panel panel-default' style='display: inline-block;')
+		div(class='panel-heading')
+			h3(class='panel-title') Contents
+		div(class='panel-body')
+			p Configuration files
+			ul
+				li 
+					a(href='#dnsmasq') dnsmasq
+				li 
+					a(href='#nfs-kernel-server') nfs-kernel-server
+			ul
+			p Boot image
+
+	h3 Configuration Files
+	h4(id='dnsmasq') Dnsmasq (DHCP, TFTP)
+	p Configuration file for dnsmasq
+	p
+		code /etc/dnsmasq.conf
+		span(class='pull-right small') 
+			a(href='/conf/dnsmasq.conf')
+				span(class='glyphicon glyphicon-download-alt', aria-hidden='true')
+	pre
+		include conf/dnsmasq
+	p
+		code /etc/dnsmasq_static_hosts
+		span(class='pull-right small') 
+			a(href='/conf/dnsmasq_static_hosts')
+				span(class='glyphicon glyphicon-download-alt', aria-hidden='true')
+	pre
+		include conf/dnsmasq_static_hosts
+
+	h4(id='nfs-kernel-server') nfs-kernel-server (NFS)
+	p Exports file for nfs-kernel-server
+	p
+		code /etc/exports
+		span(class='pull-right small') 
+			a(href='/conf/exports')
+				span(class='glyphicon glyphicon-download-alt', aria-hidden='true')
+	pre
+		include conf/exports	
+	p Note that all clients mount a subdirectory inside the /nfs/clients directory!
+	h4 Boot Image 
+	p To prepare a local SD card, follow these steps:
+	ol
+		li 
+			span Unmount SD card (replace X by disk number)
+			br
+			code diskutil unmountDisk /dev/diskX
+		li
+			span Create BOOT (100MB) and DATA (remaining space) partitions
+			br
+			code diskutil partitionDisk /dev/diskX MBR FAT32 BOOT 100m FAT32 DATA 0b
+		li
+			span Copy bootloader to /BOOT partition and update cmdline.txt (NFS path)
+		li
+			span Unmount SD card and install into Raspberry Pi node
+	p Note that the example commands are using Mac OS X Disk Utility, for Linux/Windows an equivalent disk utility program can be used			

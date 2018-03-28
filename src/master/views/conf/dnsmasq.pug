@@ -1,0 +1,51 @@
+| #################
+| # INTERFACE     #
+| #################
+| interface=#{config.interface}
+| listen-address=10.0.0.1
+| 
+| #######
+| # DNS #
+| #######
+| domain-needed
+| bogus-priv
+| no-resolv
+| no-poll 
+| server=8.8.8.8
+| server=8.8.4.4
+| local=/rpiaas.test/
+| no-hosts
+| addn-hosts=/etc/dnsmasq_static_hosts
+| expand-hosts
+| 
+| ########
+| # DHCP #
+| ########
+| domain=rpiaas.test
+| dhcp-range=10.0.0.2,10.0.10.100,12h 
+| dhcp-option=3,10.0.0.1
+| dhcp-option=6,10.0.0.1 
+| dhcp-option=option:domain-search,rpiaas.test 
+| 
+| #################
+| # STATIC IPs    #
+| #################
+each cluster, c_i in clusters
+	if cluster.domain != 'rpiaas.test'
+		| 
+		| 
+		| # Cluster: #{cluster.domain}
+		| 
+		each node,n_i in cluster.nodes
+			| 
+			| dhcp-host=#{node.hwaddr},#{node.getIPAddress()},#{node.getFQDN().replace(".rpiaas.test","")},set:#{node.getFQDN().replace(".rpiaas.test","")}
+			| dhcp-option=tag:#{node.getFQDN().replace(".rpiaas.test","")},option:root-path,"10.0.0.1:/nfs/clients/cluster#{c_i+1}/node#{n_i+1},tcp,vers=3"
+		| 
+| 
+| 
+| ########
+| # TFTP #
+| ########
+| enable-tftp
+| tftp-root=/tftpboot
+| pxe-service=0,"Raspberry Pi Boot "

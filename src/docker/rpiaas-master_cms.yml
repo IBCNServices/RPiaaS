@@ -1,0 +1,12 @@
+##############################################
+# Docker compose file for CMS on master node #
+# For agents: see rpiaas-agent.yml           #
+##############################################
+version: "2"  # "3" if beta release (swarm mode)
+services:
+  rpiaas-cms:
+    build: 
+      context: ../
+      dockerfile: docker/rpiaas-cms/Dockerfile_${ARCH}
+    ports:
+      - "8080:8080"

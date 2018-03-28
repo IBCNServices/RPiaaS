@@ -1,0 +1,18 @@
+# Base image for Raspberry Pi (all models) (armfh deprecated?)
+FROM armhf/node
+
+# Create directory for RPiaaS-CMS
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+# Install dependencies through NPM
+COPY master/package.json  /usr/src/app/
+RUN npm install
+
+# Bundle app source
+COPY master/  /usr/src/app/
+
+EXPOSE 8080
+
+# Start app through npm
+CMD ["npm","start"]

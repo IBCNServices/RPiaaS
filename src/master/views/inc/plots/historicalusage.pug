@@ -1,0 +1,60 @@
+div(class='histogram',id=''+id)
+
+script.
+	$( document ).ready(function(){
+		c3.generate({
+			bindto: '##{id}',
+			data: {
+				x: 'x',
+				xFormat: '%Y-%m-%dT%H:%M:%S.%LZ',
+				columns: [
+					['x', #{x}],
+					['usage', #{usage}]
+				],
+				type: 'line',
+				order: null,
+				colors: {
+					usage: '#993333'
+				}
+			},
+			point: {
+				r: 1
+				//show: false
+			},
+			legend: {
+				show: false
+			},
+			zoom: {
+				enabled: true
+			},
+			subchart: {
+				show: true,
+				size: {
+					height: 20
+				}
+			},
+			axis: {
+				x: {
+					type: 'timeseries',
+					tick: {
+						format: '%Y-%m-%d %H:%M',
+						count: 20,
+						rotate: 45,
+						multiline: true,
+						width: 75
+					},
+					padding: {left:0, right:0}
+				},
+				y: {
+					//max:1,
+					min:0,
+					tick: {
+						count: 5,
+						format: d3.format('%')
+					},
+					padding: {top:0, bottom:0}
+				}
+			}
+		});
+		
+	});

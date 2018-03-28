@@ -1,0 +1,21 @@
+{
+  "name": "rpiaas.cas",
+  "version": "0.0.1",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IBCNServices/RPiaaS"
+  },
+  "license": "Apache-2.0",
+  "description": "Raspberry Pi as a Service: Cluster Agent Service (CAS), runs on all nodes.",
+  "main": "rpicluster.agent.js",
+  "scripts" : {
+    "start" : "node rpicluster.agent.js"
+  },
+  "author": "Pieter-Jan Maenhaut <pieterjan.maenhaut@ugent.be>",
+  "dependencies": {
+  	"diskusage": "*",
+    "express": "*",
+    "pug": "*"
+  }
+}

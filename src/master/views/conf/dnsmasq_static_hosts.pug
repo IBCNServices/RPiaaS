@@ -1,0 +1,6 @@
+| # Static hosts for dnsmasq
+each cluster, c_i in clusters
+	if cluster.domain != 'rpiaas.test'
+		each node,n_i in cluster.nodes
+			| 
+			| #{node.getIPAddress()}	#{node.getFQDN().replace(".rpiaas.test","")}	#{node.getFQDN()}

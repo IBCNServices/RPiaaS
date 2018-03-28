@@ -1,0 +1,32 @@
+# Base image for Raspberry Pi (all models) (armfh deprecated?)
+FROM armhf/ubuntu:16.04					
+
+# Create nfs root directory
+RUN mkdir /nfs
+
+# Create volume inside /nfs folder
+VOLUME ["/nfs"]
+
+# Install nfs-kernel-server
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        netbase \
+        nfs-kernel-server \
+		&& rm -rf /var/lib/apt/lists/*
+
+# Expose NFS ports
+EXPOSE 111/tcp
+EXPOSE 111/udp 
+EXPOSE 2049/tcp
+EXPOSE 2049/udp
+EXPOSE 32764-32769/tcp
+EXPOSE 32764-32769/udp
+
+# Copy exports file
+COPY config/rpiaas-nfs/exports /etc/exports
+
+# Copy bash script and modify permissions
+COPY src/docker/rpiaas-nfs/run.sh /usr/local/bin/run.sh
+RUN chmod +x /usr/local/bin/run.sh
+
+# Start bash script
+ENTRYPOINT run.sh

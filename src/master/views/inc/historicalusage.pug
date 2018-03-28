@@ -1,0 +1,38 @@
+// inc/historicalusage.pug
+
+if history.length > 0
+	p #{history.length} data points
+
+	h5 Average Disk Usage
+	- var id = 'HistoricalDiskUsage'
+	- var x = []
+	- var usage = []
+	each point in history
+		- x.push("'"+new Date(point.timestamp).toISOString()+"'")
+		- usage.push(point.data.disk.usage)
+	include plots/historicalusage
+
+	h5 Average Memory Usage
+	- var id = 'HistoricalMemUsage'
+	- var x = []
+	- var usage = []
+	each point in history
+		- x.push("'"+new Date(point.timestamp).toISOString()+"'")
+		- usage.push(point.data.memory.usage)
+	include plots/historicalusage
+
+
+	h5 Average CPU Usage
+	div(class='row')
+		each cpu, index in history[0].data.cpu
+			div(class='col-sm-6')
+				- var id = 'HistoricalCpuUsage'+index
+				- var x = []
+				- var usage = []
+				each point in history
+					- x.push("'"+new Date(point.timestamp).toISOString()+"'")
+					- usage.push(point.data.cpu[index].usage)
+				h6(style='text-align: center') Core ##{index}
+				include plots/historicalusage
+else
+	p No data to show

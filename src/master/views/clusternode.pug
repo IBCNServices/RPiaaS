@@ -1,0 +1,34 @@
+extends ./cluster.pug
+
+block clusternode
+	div(id='selectednode', class='row')
+		h3 Node Overview
+		div(class='col-sm-12')
+			div(class='panel panel-primary')
+				div(class='panel-heading active')
+					span #{selectednode.getFQDN()} 
+					span(class='small') (#{selectednode.getIPAddress()})
+					a(href='/')
+						span(class='glyphicon glyphicon-remove pull-right', aria-hidden='true')
+				div(class='panel-body small')
+					if selectednode.online == -1
+						span(class='label label-danger small pull-right' style='color: darkred') offline
+						p Selected node is offline
+
+					else if selectednode.online == 1
+						span(class='label label-success small pull-right' style='color: darkgreen') online
+						br
+						span(class='pull-right') 
+							a(href='/api/'+ci+'/'+ni+'/') API
+						if selectednode.info
+							p Uptime: #{selectednode.info.uptime.uptime} seconds
+							h4 Current Resource Usage
+							include inc/currentusage
+						else
+							p
+								i Getting Node info...
+
+					h4 Historical Resource Usage
+					include inc/historicalusage
+						
+

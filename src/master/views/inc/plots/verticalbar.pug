@@ -1,0 +1,40 @@
+div(class='verticalbar',id=''+id)
+
+script.
+	$( document ).ready(function(){
+		c3.generate({
+			bindto: '##{id}',
+			data: {
+				columns: [
+					['used', Math.round(#{used}*100)/100],
+					['free', Math.round(#{free}*100)/100]
+				],
+				type: 'bar',
+				groups: [
+					['used','free']
+				],
+				order: null,
+				colors: {
+					used: '#993333',
+					free: '#339933',
+				},
+			},
+			legend: {
+				show: false
+			},
+			axis: {
+				
+				rotated: true,
+				x: {
+					min: 0,
+					show:false,
+				},
+				y: { 
+					min: 0,
+					max: (Math.round(#{used}*100) + Math.round(#{free}*100))/100,
+					show:false
+				 }
+			}
+		});
+		
+	});

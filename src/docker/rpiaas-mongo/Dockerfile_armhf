@@ -1,0 +1,4 @@
+# Base image for Raspberry Pi (all models) (armfh deprecated?)
+FROM ivanmarban/armhf-mongodb
+
+EXPOSE 27017/tcp

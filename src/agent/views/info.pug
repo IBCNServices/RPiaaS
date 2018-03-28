@@ -1,0 +1,50 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible' content='IE=edge')
+		meta(name='viewport' content='width=device-width, initial-scale=1')
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css')
+		link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css')
+		title RPiaaS API
+	body
+		h2 Client Agent Service (CAS) - REST API
+		table(class='table table-condensed')
+			thead
+				tr
+					td Method
+					td Path
+					td Description
+			tbody
+				tr
+					td GET
+					td 
+						a(href='ping') /ping
+					td Used for heartbeat - returns the value '1'
+				tr
+					td GET
+					td
+						a(href='all') /all
+					td Returns all information described below					
+				tr
+					td GET
+					td
+						a(href='uptime') /uptime
+					td Returns a json object containing both the system and CAS uptime in seconds.
+				tr
+					td GET
+					td
+						a(href='usage/cpu') /usage/cpu
+					td Returns the actual CPU usage per core together with some information about the CPU
+				tr
+					td GET
+					td
+						a(href='usage/memory') /usage/memory
+					td Returns the actual memory (RAM) usage
+				tr
+					td GET
+					td
+						a(href='usage/disk') /usage/disk
+					td Returns the actual disk usage (based on /data directory)
+

@@ -1,0 +1,53 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible' content='IE=edge')
+		meta(name='viewport' content='width=device-width, initial-scale=1')
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css')
+		link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css')
+		link(rel='stylesheet', href='/css/main.css')
+		title RPiaaS
+	body
+		script(src='https://code.jquery.com/jquery-3.1.0.min.js')
+		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+		script(src='https://d3js.org/d3.v3.min.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.js')
+		script(src='/js/utils.js')
+
+		nav(class='navbar navbar-inverse navbar-fixed-top')
+			div(class='container')
+				div(class='navbar-header')
+					button(type='button',class='navbar-toggle collapsed',data-toggle='collapse',data-target='#navbar',aria-expanded='false',aria-controls='navbar')
+						span(class='sr-only') Toggle navigation
+						span(class='icon-bar') 
+						span(class='icon-bar') 
+						span(class='icon-bar')
+					a(href='/', class='navbar-brand') RPiaaS
+				div(id='navbar',class='navbar-collapse collapse')
+					ul(class='nav navbar-nav')
+						li
+							a(href='/config') Config					
+		div(class='container', id='main')
+			p(class='pull-right small') Page reloads every 60 seconds. 
+				a(href='javascript:location.reload(true)') Reload now 
+					span(class='glyphicon glyphicon-refresh', aria-hidden='true')
+			block content
+		footer(class='footer')
+			div(class='container')
+				span(class='text-muted') 
+					span Developed with 
+					span(class='glyphicon glyphicon-heart', aria-hidden='true') 
+					span &nbsp;at 
+					a(href='http://www.ugent.be/en') Ghent University 
+					span and 
+					a(href='https://www.ugent.be/ea/idlab/en') IDLab
+
+		script.
+			function updateStatus(){
+				location.reload(true)
+			}
+
+			setTimeout(updateStatus, 60000);
+

@@ -1,0 +1,37 @@
+extends ./master.pug
+block content
+	block clusternode
+
+	div(id='clusters', class='row')
+		h3 Cluster Overview
+		each cluster, c_i in clusters
+			div(class='col-sm-3')
+				div(class='panel panel-primary')
+					div(class='panel-heading active')
+						span(class='listgroup-item small')= cluster.domain
+					ul(class='list-group')
+						each node,n_i in cluster.nodes
+							if(c_i == ci && n_i == ni)
+								li(class='list-group-item small selected', id='node['+c_i+']['+n_i+']', href='/'+c_i+'/'+n_i+'/')
+									span= node.hostname
+									span  (
+									span(class='small')= node.getIPAddress()
+									span )
+									if node.online == 1
+										span(class='glyphicon glyphicon-ok-sign pull-right', aria-hidden='true', style='color:darkgreen')
+									else if node.online == -1
+										span(class='glyphicon glyphicon-remove-sign pull-right', aria-hidden='true', style='color:darkred')
+									else 
+										span(class='glyphicon glyphicon-question-sign pull-right', aria-hidden='true') 
+							else 
+								a(class='list-group-item small', id='node['+c_i+']['+n_i+']', href='/'+c_i+'/'+n_i+'/')
+									span= node.hostname
+									span  (
+									span(class='small')= node.getIPAddress()
+									span )
+									if node.online == 1
+										span(class='glyphicon glyphicon-ok-sign pull-right', aria-hidden='true', style='color:darkgreen')
+									else if node.online == -1
+										span(class='glyphicon glyphicon-remove-sign pull-right', aria-hidden='true', style='color:darkred')
+									else 
+										span(class='glyphicon glyphicon-question-sign pull-right', aria-hidden='true') 

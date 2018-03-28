@@ -1,0 +1,25 @@
+# Base image for x64/x86
+FROM node:boron
+
+# Create /data directory
+RUN mkdir -p /data
+
+# Create volume inside /data folder
+VOLUME ["/data"]
+
+# Create directory for RPiaaS-CAS
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
+
+# Install dependencies through NPM
+COPY agent/package.json  /usr/src/app/
+RUN npm install
+
+# Bundle app source
+COPY agent/  /usr/src/app/
+
+EXPOSE 8081
+
+# Start app through npm
+CMD ["npm","start"]

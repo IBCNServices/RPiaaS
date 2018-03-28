@@ -1,0 +1,23 @@
+{
+  "name": "rpiaas.cms",
+  "version": "0.0.1",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IBCNServices/RPiaaS"
+  },
+  "license": "Apache-2.0",
+  "description": "Raspberry Pi as a Service: Cluster Master Service (CMS), runs on master node.",
+  "main": "rpicluster.master.js",
+  "scripts" : {
+    "start" : "node rpicluster.master.js"
+  },
+  "author": "Pieter-Jan Maenhaut <pieterjan.maenhaut@ugent.be> (http://www.pjm.be/)",
+  "dependencies": {
+  	"express": "*",
+    "pug": "*",
+    "request": "*",
+    "mongodb": "*",
+    "monk": "*"
+  }
+}
