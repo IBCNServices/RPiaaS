@@ -3,7 +3,8 @@ var router = express.Router();
 
 router.use(function (req,res,next) {
   //console.log("/" + req.method);
-  //res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
 
@@ -33,6 +34,24 @@ router.get("/conf/exports",function(req,res){
 	res.render('conf/exports');
 });
 
+// Get history
+router.get("/api/history/*/*/", function(req,res){
+	var parts = (req.params[0]).split("/");
+
+	if(parts[0] < clusters.length && parts[1] < clusters[parts[0]].nodes.length){
+		var selectedNode = (clusters[parts[0]]).nodes[parts[1]];
+		
+		// Get historical data
+		var db = req.db;
+
+		var collection = db.get(selectedNode.getFQDN());
+		collection.find({},{},function(e,data){
+			res.writeHead(200, {'Content-Type': 'application/json'});
+			res.end(JSON.stringify(data));
+		});
+	}
+});
+
 // API (forwarder request)
 router.get("/api/*/*/*",function(req,res){
 	var parts = (req.originalUrl).split("/");
@@ -46,10 +65,17 @@ router.get("/api/*/*/*",function(req,res){
 			var url = "http://"+selectedNode.getIPAddress()+":8081/"+parts.slice(4).join("/");
 			request(url).pipe(res);
 		} else {
-			res.end("Selected node is offline.")
+			
+			res.writeHead(200, {'Content-Type': 'application/json'});
+			if(parts.slice(4) == 'ping'){
+				res.end(JSON.stringify(0));
+			} else {
+				res.end(JSON.stringify("Selected node is offline."));
+			}
 		}
 	} else {
-		res.end("Invalid Request.");
+		res.writeHead(200, {'Content-Type': 'application/json'});
+		res.end(JSON.stringify("Invalid Request."));
 	}
 });
 

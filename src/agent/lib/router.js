@@ -15,64 +15,50 @@ router.get("/",function(req,res){
 
 //ping
 router.get("/ping",function(req,res){
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('1');
+    res.writeHead(200, {'Content-Type': 'application/json'});
+    res.end(JSON.stringify(1));
 });
 
 //uptime
 router.get("/uptime",function(req,res){
-    res.writeHead(200, {'Content-Type': 'application/json'});
-    systeminfo.uptime(function(result){res.end(JSON.stringify(result));});
+    systeminfo.uptime(printResult.bind( {res: res} ));
+});
+
+// CPU Temperature
+router.get("/temp/cpu", function(req, res) {
+    systeminfo.cpuTemp(printResult.bind( {res: res} ));
 });
 
 // CPU Usage
 router.get("/usage/cpu", function(req, res) {
-    res.writeHead(200, {'Content-Type': 'application/json'});
-    systeminfo.cpuUsage(function(result){res.end(JSON.stringify(result));});
+    systeminfo.cpuUsage(printResult.bind( {res: res} ));
 });
 
 // Memory Usage
 router.get("/usage/memory", function(req, res) {
-    res.writeHead(200, {'Content-Type': 'application/json'});
-    systeminfo.memoryUsage(function(result){res.end(JSON.stringify(result));});
+    systeminfo.memoryUsage(printResult.bind( {res: res} ));
 });
 
 // Disk Usage
 router.get("/usage/disk", function(req, res) {
-    res.writeHead(200, {'Content-Type': 'application/json'});
-    systeminfo.diskUsage(function(result){res.end(JSON.stringify(result));});
+    systeminfo.diskUsage(printResult.bind( {res: res} ));
 });
 
 // All Info
 router.get("/all", function(req,res){
-    var info = {};
-    res.writeHead(200, {'Content-Type': 'application/json'});
-    // 1. Get uptime    
-    systeminfo.uptime(
-        function(result){
-            info.uptime = result;
-            // 2. Get CPU Usage
-            systeminfo.cpuUsage(    
-                function(result){
-                    info.cpu = result;
-                    // 3. Get Memory Usage
-                    systeminfo.memoryUsage(
-                        function(result){
-                            info.memory = result;
-                            // 4. Get disk usage
-                            systeminfo.diskUsage(
-                                function(result){
-                                    info.disk = result;
-                                    // Print full result
-                                    res.end(JSON.stringify(info));
-                                }
-                            );
-                        }
-                    );
-                }
-            );
-        }
-    );
+    systeminfo.all(printResult.bind( {res: res} ));
 });
+
+function printResult(error,result) {
+    // function body
+    // optional return;
+    if(error){
+        console.log(error);
+        this.res.status(404).send(error);
+    } else {
+        this.res.writeHead(200, {'Content-Type': 'application/json'});
+        this.res.end(JSON.stringify(result));
+    }
+};
 
 module.exports = router;

@@ -13,8 +13,9 @@ h5 Memory Usage (in MB)
 include plots/verticalbar
 
 h5 CPU Usage
+p Temperature: #{selectednode.info.temp.cpu.temperature} °C
 div(class='row')
-	each cpu, index in selectednode.info.cpu
+	each cpu, index in selectednode.info.cpu 
 		// if index < 2
 		div(class='col-sm-6')
 			- id = 'cpuusage'+index

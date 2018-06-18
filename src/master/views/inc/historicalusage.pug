@@ -34,5 +34,14 @@ if history.length > 0
 					- usage.push(point.data.cpu[index].usage)
 				h6(style='text-align: center') Core ##{index}
 				include plots/historicalusage
+
+	h5 CPU temperature
+	- var id ='HistoricalCpuTemp'
+	- var x = []
+	- var temp = []
+	each point in history
+		- x.push("'"+new Date(point.timestamp).toISOString()+"'")
+		- temp.push(point.data.temp.cpu.temperature)
+	include plots/historicaltemp
 else
 	p No data to show
