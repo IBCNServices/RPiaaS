@@ -9,7 +9,7 @@ if history.length > 0
 	- var usage = []
 	each point in history
 		- x.push("'"+new Date(point.timestamp).toISOString()+"'")
-		- usage.push(point.data.disk.usage)
+		- usage.push(point.data.usage.disk.usage)
 	include plots/historicalusage
 
 	h5 Average Memory Usage
@@ -18,20 +18,20 @@ if history.length > 0
 	- var usage = []
 	each point in history
 		- x.push("'"+new Date(point.timestamp).toISOString()+"'")
-		- usage.push(point.data.memory.usage)
+		- usage.push(point.data.usage.memory.usage)
 	include plots/historicalusage
 
 
 	h5 Average CPU Usage
 	div(class='row')
-		each cpu, index in history[0].data.cpu
+		each cpu, index in history[0].data.usage.cpu
 			div(class='col-sm-6')
 				- var id = 'HistoricalCpuUsage'+index
 				- var x = []
 				- var usage = []
 				each point in history
 					- x.push("'"+new Date(point.timestamp).toISOString()+"'")
-					- usage.push(point.data.cpu[index].usage)
+					- usage.push(point.data.usage.cpu[index].usage)
 				h6(style='text-align: center') Core ##{index}
 				include plots/historicalusage
 

@@ -1,21 +1,21 @@
 // inc/currentusage.pug
 
 - var id = 'DiskUsage'
-- var used = (selectednode.info.disk.total-selectednode.info.disk.free) / (1024 * 1024 * 1024)
-- var free = selectednode.info.disk.free / (1024 * 1024 * 1024)
+- var used = (selectednode.info.usage.disk.total-selectednode.info.usage.disk.free) / (1024 * 1024 * 1024)
+- var free = selectednode.info.usage.disk.free / (1024 * 1024 * 1024)
 h5 Disk Usage (in GB)
 include plots/verticalbar
 
 - id = 'MemUsage'
-- used = selectednode.info.memory.used / (1024 * 1024)
-- free = selectednode.info.memory.free / (1024 * 1024)
+- used = selectednode.info.usage.memory.used / (1024 * 1024)
+- free = selectednode.info.usage.memory.free / (1024 * 1024)
 h5 Memory Usage (in MB)
 include plots/verticalbar
 
 h5 CPU Usage
 p Temperature: #{selectednode.info.temp.cpu.temperature} °C
 div(class='row')
-	each cpu, index in selectednode.info.cpu 
+	each cpu, index in selectednode.info.usage.cpu 
 		// if index < 2
 		div(class='col-sm-6')
 			- id = 'cpuusage'+index
