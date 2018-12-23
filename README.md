@@ -15,6 +15,8 @@ Raspberry Pi as a Service (**RPiaaS**) is a low-cost and energy-efficient cloud 
 
 RPiaaS provides an easy-to-use cloud environment for experimentation and validation of resource management experiments, and is initially designed to facilitate the step from simulations towards experimental evaluations on larger cloud testbeds. The developed software however is easy to extend and/or customize, for example to use it for managing a classroom environment or to build a multimedia streaming cluster.
 
+An in-depth overview of the testbed can be found [here](https://doi.org/10.1002/spe.2669)
+
 ## Source Code will be released soon
 
 We just received permission to publish the code, and are now cleaning up the source code and finishing all documentation. 
@@ -50,7 +52,9 @@ The configuration files required for the different containers are automatically 
 
 RPiaaS is developed at [Ghent University](https://www.ugent.be/en) - [IDLab](https://www.ugent.be/ea/idlab/en). 
 We strongly encourage fellow researchers within the field to try out and customize the code for their own research projects. 
-If you use this code for your own projects, please give credit to the original authors, for example by citing the following publication:
+If you use this code for your own projects, please give credit to the original authors, for example by citing one of the following publications:
+
+> Pieter-Jan Maenhaut, Bruno Volckaert, Veerle Ongenae, Filip De Turck. Efficient resource management in the cloud: From simulation to experimental validation using a low‐cost Raspberry Pi testbed. Softw: Pract Exper. 2018;1–29. https://doi.org/10.1002/spe.2669
 
 > Pieter-Jan Maenhaut, Hendrik Moens, Bruno Volckaert, Veerle Ongenae, Filip De Turck. Resource Allocation in the Cloud: From Simulation to Experimental Validation . In proceedings of the 2017 IEEE 10th International Conference on Cloud Computing (CLOUD 2017), Honolulu, Hawaii, USA, 2017
 
